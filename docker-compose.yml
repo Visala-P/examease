@@ -1,0 +1,61 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: examease-postgres
+    environment:
+      POSTGRES_DB: examease_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - examease-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Spring Boot Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: examease-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/examease_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+      ADMIN_PASSWORD: admin123
+    ports:
+      - "8086:8085"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - examease-network
+    restart: unless-stopped
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: examease-frontend
+    ports:
+      - "8084:80"
+    depends_on:
+      - backend
+    networks:
+      - examease-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  examease-network:
+    driver: bridge

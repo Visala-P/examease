@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.examease.backend.ExameaseBackendApplication"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="backend"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="false"/>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS"/>
+    <mapAttribute key="org.eclipse.jdt.launching.CLASSPATH"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dexamease.jwt.secret=a_long_secure_secret_here"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="--spring.profiles.active=dev"/>
+    <listAttribute key="org.eclipse.debug.core.environmentVariables">
+        <mapEntry key="ADMIN_PASSWORD" value="admin123"/>
+        <mapEntry key="EXAMASE_JWT_SECRET" value="a_long_secure_secret_here"/>
+        <!-- Default dev DB values (use pgAdmin or override in Run Config/environment for your machine) -->
+        <mapEntry key="SPRING_DATASOURCE_URL" value="jdbc:postgresql://localhost:5432/examease_db"/>
+        <mapEntry key="SPRING_DATASOURCE_USERNAME" value="examease_user"/>
+        <mapEntry key="SPRING_DATASOURCE_PASSWORD" value="change_me"/>
+    </listAttribute>
+</launchConfiguration>
