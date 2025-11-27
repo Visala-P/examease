@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: examease
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: examease-config
+  namespace: examease
+data:
+  POSTGRES_DB: examease_db
+  POSTGRES_USER: postgres
+  SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-service:5432/examease_db
+  SPRING_DATASOURCE_USERNAME: postgres
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: examease-secrets
+  namespace: examease
+type: Opaque
+stringData:
+  POSTGRES_PASSWORD: root
+  SPRING_DATASOURCE_PASSWORD: root
+  ADMIN_PASSWORD: admin123
+  JWT_SECRET: ReplaceThisWithASecureRandomSecretKeyOfAtLeast256Bits!
