@@ -285,4 +285,4 @@ Clean, distraction-free exam taking experience.
 
 ---
 
-**Built with ❤️ for seamless online examinations**
+**Built for seamless online examinations**
