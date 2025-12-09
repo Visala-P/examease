@@ -4,7 +4,7 @@ A modern, full-stack online examination platform built with **React**, **TypeScr
 
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)](https://hub.docker.com/u/visala337)
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-Ready-326CE5?logo=kubernetes&logoColor=white)](./k8s)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 
 ## ✨ Features
 
